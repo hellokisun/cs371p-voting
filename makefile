@@ -17,10 +17,10 @@ RunVoting: Voting.h Voting.c++ RunVoting.c++
 	g++ -pedantic -std=c++0x -Wall Voting.c++ RunVoting.c++ -o RunVoting
 
 run: RunVoting
-	RunVoting < RunVoting.in
+	./RunVoting < RunVoting.in
 
 runv: RunVoting
-	valgrind RunVoting < RunVoting.in
+	valgrind ./RunVoting < RunVoting.in
 
 TestVoting: Voting.h Voting.c++ TestVoting.c++
 	g++ -pedantic -std=c++0x -Wall Voting.c++ TestVoting.c++ -o TestVoting -lcppunit -ldl

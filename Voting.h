@@ -18,21 +18,16 @@ class Case {
 		void set_count(int);
 		void add_candidate(std::string);
 		void add_ballot(std::vector<int>);
-		vector<int> pop_ballot(int position);
 		string get_candidate(int);
 		vector<int> get_ballot(int);
 		int get_ballot_count();
 		~Case();
 };
-//Case::Case();
-//int Case::get_count();
-//void Case::set_count(int count);
-//void Case::add_candidate(std::string candidate);
-//void Case::add_ballot(std::vector<int> ballot);
-//string Case::get_candidate(int position);
-//vector<int> Case::get_ballot(int position);
-//int Case::get_ballot_count();
-//Case::~Case();
+
+void print_vector (vector<int>& v);
+
+void print_double_vector (vector<vector<int> >& v);
+
 bool voting_read(istream& r, Case c);
 
 void voting_print(ostream& w, vector<string> winner);

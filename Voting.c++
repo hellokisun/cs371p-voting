@@ -125,6 +125,8 @@ void voting_print(ostream& w, vector<string> winner) {
 	for(; i < (int)winner.size(); i++) {
 		w << winner[i] << endl;
 	}
+	w << endl;
+	winner.clear();
 }
 
 vector<string> voting_eval(ostream& w, Case *c) {
@@ -171,16 +173,32 @@ vector<string> voting_eval(ostream& w, Case *c) {
 		//check for ties
 		unsigned int size = first_picks[1].size();
 		bool tie = true;
+		vector<int> tied;
+		
 		for(i = 1; i < first_picks.size(); i++) {
 //		    cout << "size of first_picks[" << i << "]: " << first_picks[i].size() << endl; 
-			if(first_picks[i].size() != size && first_picks[i].size() != 0)
-				tie = false;
-		}
-
-		if (tie == true) {
-			for(i = 1; i < first_picks.size(); i++) {
-				winner.push_back((*c).get_candidate(i-1));
+//			if(first_picks[i].size() != size && first_picks[i].size() != 0) {
+//			cout << "size: " << size << "; candidate " << i << "'s ballot size: " << first_picks[i].size() << endl;
+			if(first_picks[i].size() != size) {
+				if(first_picks[i].size() != 0) {
+					tie = false;
+					tied.clear();
+				}
 			}
+			else {
+				tied.push_back(i);
+			}
+		}
+//		cout << "tied candidates: ";
+//		print_vector(tied);
+		if (tie == true) {
+			for(i = 0; i < tied.size(); ++i) {
+				winner.push_back((*c).get_candidate(tied[i]-1));
+			}
+//			for(i = 1; i < first_picks.size(); i++) {
+//				if(first_picks[i].size() != 0)
+//					winner.push_back((*c).get_candidate(i-1));
+//			}
 //			cout << "returning tied winners" << endl;
 			return winner;
 		}
@@ -194,8 +212,7 @@ vector<string> voting_eval(ostream& w, Case *c) {
 		//deal with loser ballots; add the candidate# tied for last place to the vector
 		//PROBLEMS HERE!!
 //		int lowest = first_picks[1].size();
-        int lowest = 21;
-		int tmps;
+        int lowest = (*c).get_ballot_count();
 		for(i = 1; i <= (*c).get_count(); i++) {
 //		    tmps = first_picks[i].size();
 			if(counter[i] <= lowest && counter[i] != -1) {
@@ -206,6 +223,7 @@ vector<string> voting_eval(ostream& w, Case *c) {
 				losers.push_back(i);
 			}
 		}
+//		cout << "lowest: " << lowest << endl;
 		
 		for(i = 0; i < losers.size(); ++i) {
 			counter[losers[i]] = -1;
@@ -220,20 +238,20 @@ vector<string> voting_eval(ostream& w, Case *c) {
 		for(i = 0; i < losers.size(); ++i) { //for all the losing candidates
 			int loser = losers[i];
 			int losersize = first_picks[loser].size();
-	//		cout << "loser: " << loser << endl;
+//			cout << "loser: " << loser << endl;
 			
 			for(j = 0; j < losersize; ++j) {	//all the ballots for loser
 			    vector<int> tballot;
 			    int b_num = first_picks[loser][0];
 				tballot = (*c).get_ballot(b_num);	//ballot that has losing candidate listed as #1
 				tballot.erase(tballot.begin());
-	//			cout << "bnum : " << b_num << endl;
-	//			cout << "size : " << losersize << endl;
-	//			cout << "got the ballot..." << endl;
+//				cout << "bnum : " << b_num << endl;
+//				cout << "size : " << losersize << endl;
+//				cout << "got the ballot..." << endl;
 //				for(i = 0; i < ((*c).get_ballot(first_picks[loser][j])).size(); ++i) {
 //				    cout << ((*c).get_ballot(first_picks[loser][j]))[i] << endl;
 //				}
-	//			cout << "the next choice for this ballot: " << tballot[0] << endl;
+//				cout << "the next choice for this ballot: " << tballot[0] << endl;
 				
 //				cout << "all the numbers in the losers array" << endl;
 //				int tmp;
@@ -244,13 +262,11 @@ vector<string> voting_eval(ostream& w, Case *c) {
                 //if(b_num == 22) {
                 
 //              cout << "tballot for b_num " << b_num << ": ";    
-//              print_vector(tballot);
+//                print_vector(tballot);
                 //}                
-				int x, z;
+				int x;
 				int bsize = tballot.size();
 //				cout << "tballot.size() : " << bsize << endl;
-				bool f = true;
-				
 			    for(x = 0; x < bsize; ++x) {
 			        if(first_picks[tballot[0]].size() == 0) {
 			            tballot.erase(tballot.begin());
@@ -282,10 +298,16 @@ vector<string> voting_eval(ostream& w, Case *c) {
 //		for(i = 0; i < (*c).get_count(); ++i) {
 //			cout << "counter[" << i+1 << "]: " << counter[i+1] << endl;
 //		}
+		
 	}
 
-
-
+//    delete [] counter;
+    for(i = 0; i < first_picks.size(); ++i) {
+        first_picks[i].clear();
+        delete &first_picks[i];
+    }
+    first_picks.clear();
+    delete &first_picks;
 	return winner;
 }
 
@@ -312,7 +334,6 @@ void print_double_vector (vector<vector<int> >& v) {
 void voting_solve (istream& r, ostream& w) {
 	int totalCases, i;
 	r >> totalCases;		//number of cases
-//	cout << totalCases << endl;
 	
 	for(i = 0; i < totalCases; ++i) {
 		Case *vote_case = new Case();
@@ -324,6 +345,7 @@ void voting_solve (istream& r, ostream& w) {
 //		cout << "got the winners" << endl;
 		voting_print(w, winner);
 		delete vote_case;
+//		cout << "===============end of case==================" << endl;
 	}
 }
 

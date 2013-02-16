@@ -97,6 +97,7 @@ void voting_print(ostream& w, vector<string> winner) {
 	for(; i < (int)winner.size(); i++) {
 		w << winner[i] << endl;
 	}
+	winner.clear();
 }
 
 vector<string> voting_eval(ostream& w, Case *c) {
@@ -125,20 +126,43 @@ vector<string> voting_eval(ostream& w, Case *c) {
 				return winner;
 			}
 		}
-		
-		unsigned int size = first_picks[1].size();
+		unsigned int size = first_picks[1].size(); 
 		bool tie = true;
-		for(i = 1; i < first_picks.size(); i++) {
-			if(first_picks[i].size() != size && first_picks[i].size() != 0)
-				tie = false;
+		vector<int> tied;
+		bool is_all_zero = true;
+		for(i = 1; i < first_picks.size(); ++i) {
+			if(first_picks[i].size() != 0) {
+				is_all_zero = false;
+				size = first_picks[i].size();
+				break;
+			}
 		}
-
-		if (tie == true) {
-			for(i = 1; i < first_picks.size(); i++) {
+		
+		if(is_all_zero) {
+			for(i = 1; i < first_picks.size(); ++i) {
 				winner.push_back((*c).get_candidate(i-1));
+			}
+			return winner;	
+		}
+		
+		for(i = 1; i < first_picks.size(); i++) {
+			if(first_picks[i].size() != size) {
+				if(first_picks[i].size() != 0) {
+					tie = false;
+					tied.clear();
+				}
+			}
+			else {
+				tied.push_back(i);
+			}
+		}
+		if (tie == true) {
+			for(i = 0; i < tied.size(); ++i) {
+				winner.push_back((*c).get_candidate(tied[i]-1));
 			}
 			return winner;
 		}
+		
         int lowest = (*c).get_ballot_count();
 		for(i = 1; i <= (*c).get_count(); i++) {
 			if(counter[i] <= lowest && counter[i] != -1) {
@@ -223,6 +247,8 @@ void voting_solve (istream& r, ostream& w) {
 	r >> totalCases;		//number of cases
 	
 	for(i = 0; i < totalCases; ++i) {
+		if(i != 0)
+			w << endl;
 		Case *vote_case = new Case();
 		vector<string> winner;
 		voting_read(r, vote_case);

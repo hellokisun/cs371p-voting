@@ -125,7 +125,6 @@ void voting_print(ostream& w, vector<string> winner) {
 	for(; i < (int)winner.size(); i++) {
 		w << winner[i] << endl;
 	}
-	w << endl;
 	winner.clear();
 }
 
@@ -171,9 +170,24 @@ vector<string> voting_eval(ostream& w, Case *c) {
 //		cout << "checking for ties" << endl;
 		
 		//check for ties
-		unsigned int size = first_picks[1].size();
+		unsigned int size = first_picks[1].size();  //this is wrong. 
 		bool tie = true;
 		vector<int> tied;
+		bool is_all_zero = true;
+		for(i = 1; i < first_picks.size(); ++i) {
+			if(first_picks[i].size() != 0) {
+				is_all_zero = false;
+				size = first_picks[i].size();
+				break;
+			}
+		}
+		
+		if(is_all_zero) {
+			for(i = 1; i < first_picks.size(); ++i) {
+				winner.push_back((*c).get_candidate(i-1));
+			}
+			return winner;	
+		}
 		
 		for(i = 1; i < first_picks.size(); i++) {
 //		    cout << "size of first_picks[" << i << "]: " << first_picks[i].size() << endl; 
@@ -336,6 +350,8 @@ void voting_solve (istream& r, ostream& w) {
 	r >> totalCases;		//number of cases
 	
 	for(i = 0; i < totalCases; ++i) {
+		if(i != 0)
+			w << endl;
 		Case *vote_case = new Case();
 		vector<string> winner;
 //		cout << "haven't done anything yet" << endl;

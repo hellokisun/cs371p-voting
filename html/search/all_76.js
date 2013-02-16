@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['voting_2ec_2b_2b',['Voting.c++',['../Voting_8c_09_09.html',1,'']]],
+  ['voting_2eh',['Voting.h',['../Voting_8h.html',1,'']]],
+  ['voting_5feval',['voting_eval',['../UVaVoting_8c_09_09.html#a6b79aa557838d30d80c177290d2e1c8c',1,'voting_eval(ostream &amp;w, Case *c):&#160;UVaVoting.c++'],['../Voting_8c_09_09.html#a6b79aa557838d30d80c177290d2e1c8c',1,'voting_eval(ostream &amp;w, Case *c):&#160;Voting.c++'],['../Voting_8h.html#a6b79aa557838d30d80c177290d2e1c8c',1,'voting_eval(ostream &amp;w, Case *c):&#160;UVaVoting.c++']]],
+  ['voting_5fprint',['voting_print',['../UVaVoting_8c_09_09.html#a341af60fbec12a3202f5a22c11e36df4',1,'voting_print(ostream &amp;w, vector&lt; string &gt; winner):&#160;UVaVoting.c++'],['../Voting_8c_09_09.html#a341af60fbec12a3202f5a22c11e36df4',1,'voting_print(ostream &amp;w, vector&lt; string &gt; winner):&#160;Voting.c++'],['../Voting_8h.html#a341af60fbec12a3202f5a22c11e36df4',1,'voting_print(ostream &amp;w, vector&lt; string &gt; winner):&#160;UVaVoting.c++']]],
+  ['voting_5fread',['voting_read',['../UVaVoting_8c_09_09.html#a3243e3cdbb96e149c405538725b4c8ef',1,'voting_read(istream &amp;r, Case *c):&#160;UVaVoting.c++'],['../Voting_8c_09_09.html#a3243e3cdbb96e149c405538725b4c8ef',1,'voting_read(istream &amp;r, Case *c):&#160;Voting.c++'],['../Voting_8h.html#a3243e3cdbb96e149c405538725b4c8ef',1,'voting_read(istream &amp;r, Case *c):&#160;UVaVoting.c++']]],
+  ['voting_5fsolve',['voting_solve',['../UVaVoting_8c_09_09.html#aed21eca169108fbf5b77db1e7e21af2e',1,'voting_solve(istream &amp;r, ostream &amp;w):&#160;UVaVoting.c++'],['../Voting_8c_09_09.html#aed21eca169108fbf5b77db1e7e21af2e',1,'voting_solve(istream &amp;r, ostream &amp;w):&#160;Voting.c++'],['../Voting_8h.html#aed21eca169108fbf5b77db1e7e21af2e',1,'voting_solve(istream &amp;r, ostream &amp;w):&#160;UVaVoting.c++']]]
+];

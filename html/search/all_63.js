@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['candidates',['candidates',['../classCase.html#ab63eca8ca7a53074cf8e599860dfdded',1,'Case::candidates()'],['../classCase.html#af8072f9b38fbf68396f0e5af47c77efe',1,'Case::candidates()']]],
+  ['case',['Case',['../classCase.html',1,'']]],
+  ['cppunit_5ftest',['CPPUNIT_TEST',['../structTestVoting.html#a58ca5097cdfc84cefe66b57c864a6b91',1,'TestVoting::CPPUNIT_TEST(test_read_1)'],['../structTestVoting.html#a65c2f23f2cc419df33f7fdd770babd8e',1,'TestVoting::CPPUNIT_TEST(test_read_2)'],['../structTestVoting.html#a0058f3b24df92ab96794a7723c22a7f6',1,'TestVoting::CPPUNIT_TEST(test_read_3)'],['../structTestVoting.html#ac9155400076f373345fe8181db7ea480',1,'TestVoting::CPPUNIT_TEST(test_print_1)'],['../structTestVoting.html#aab47f4f4bc916bb9f09db26dec68be75',1,'TestVoting::CPPUNIT_TEST(test_print_2)'],['../structTestVoting.html#a0cfe6693b8a3b03f72417ba0b1ced0e7',1,'TestVoting::CPPUNIT_TEST(test_print_3)'],['../structTestVoting.html#af57136458253c99c63268be7cd3f97bc',1,'TestVoting::CPPUNIT_TEST(test_eval_1)'],['../structTestVoting.html#ac19e194d356f86a3189b4951018180f2',1,'TestVoting::CPPUNIT_TEST(test_eval_2)'],['../structTestVoting.html#a439e18d8715e0805df71cbf5b847b011',1,'TestVoting::CPPUNIT_TEST(test_eval_3)'],['../structTestVoting.html#a309fcb8a941a99530d67dd0b00d05956',1,'TestVoting::CPPUNIT_TEST(test_solve_1)'],['../structTestVoting.html#a5a808228d8d47cc7543a63b47df172b1',1,'TestVoting::CPPUNIT_TEST(test_solve_2)'],['../structTestVoting.html#aaec4868a9fb66f37d3a9b4945db60150',1,'TestVoting::CPPUNIT_TEST(test_solve_3)']]],
+  ['cppunit_5ftest_5fsuite',['CPPUNIT_TEST_SUITE',['../structTestVoting.html#ada5736a2829b0d38ff78afddf132895a',1,'TestVoting']]],
+  ['cppunit_5ftest_5fsuite_5fend',['CPPUNIT_TEST_SUITE_END',['../structTestVoting.html#a05fcccdcb44487a43abe62a9f62b883d',1,'TestVoting']]],
+  ['cs371p_2dvoting',['cs371p-voting',['../md_README.html',1,'']]]
+];

@@ -13,7 +13,6 @@ class Case {
 	vector<std::vector<int> > ballots;		// vector of all the ballots
 
 	public:
-		Case();
 		int get_count();
 		void set_count(int);
 		void add_candidate(std::string);
@@ -23,9 +22,6 @@ class Case {
 		int get_ballot_count();
 		~Case();
 };
-Case::Case() {
-
-}
 
 int Case::get_count() {
 	return numCandidates;
@@ -218,7 +214,7 @@ vector<string> voting_eval(ostream& w, Case *c) {
         delete &first_picks[i];
     }
     first_picks.clear();
-    delete &first_picks;
+//    delete &first_picks;
 	return winner;
 }
 
